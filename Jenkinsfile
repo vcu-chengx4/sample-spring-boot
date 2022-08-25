@@ -56,6 +56,7 @@ pipeline {
 
                 withAWS(credentials:'aws-credentials') {
                     sh 'aws eks update-kubeconfig --name hilarious-painting-1661434301'
+                    sh 'ls'
                     sh 'chmod +x deployment-status.sh && ./deployment-status.sh'
                     sh "kubectl set image deployment sample-spring-boot -n devopslab springboot-sample=$dogistan/devopslab:latest"
                 }

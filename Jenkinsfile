@@ -17,9 +17,8 @@ pipeline {
         }
         stage('sonarqube') {
         agent {
-            docker { image 'sonarsource/sonar-scanner-cli:latest' } }
             steps {
-                sh 'echo scanning!'
+                sh 'chmod +x gradlew && ./gradlew sonarqube'
             }
         }
         stage('docker build') {

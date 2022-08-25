@@ -3,7 +3,6 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 	id 'jacoco'
-	id "org.sonarqube" version "3.4.0.2513"
 }
 
 group = 'com.example'
@@ -36,11 +35,3 @@ test {
 	useJUnitPlatform()
 }
 
-sonarqube {
-  properties {
-    property "sonar.projectKey", "vcu-chengx4_sample-spring-boot"
-    property "sonar.organization", "vcu-chengx4"
-    property "sonar.host.url", "https://sonarcloud.io"
-    property "sonar.login", "edc79a17545572d8d8303b204dffdc8acbb21ea4"
-  }
-}

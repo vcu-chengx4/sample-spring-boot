@@ -16,7 +16,6 @@ pipeline {
             }
         }
         stage('sonarqube') {
-        agent {
             steps {
                 sh 'chmod +x gradlew && ./gradlew sonarqube'
             }

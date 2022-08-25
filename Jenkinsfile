@@ -17,7 +17,7 @@ pipeline {
         }
         stage('sonarqube') {
             steps {
-                sh 'chmod +x gradlew && ./gradlew sonarqube'
+                echo 'sup'
             }
         }
         stage('docker build') {

@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     echo "building image"
-                    dockerImage = docker.build("dogistan/devopslab:${env.BUILD_NUMBER}")
+                    DOCKERIMAGE = docker.build("dogistan/devopslab:${env.BUILD_NUMBER}")
                 }
             }
         }
@@ -34,8 +34,8 @@ pipeline {
                 script {
                     echo "uploading image"
                     docker.withRegistry('','dockerhub') {
-                        dockerImage.push("${env.BUILD_NUMBER}")
-                        dockerImage.push("latest")
+                        DOCKERIMAGE.push("${env.BUILD_NUMBER}")
+                        DOCKERIMAGE.push("latest")
                     }
                 }
             }

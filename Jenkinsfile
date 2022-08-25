@@ -56,9 +56,10 @@ pipeline {
 
                 withAWS(credentials:'aws-credentials') {
                     sh 'aws eks update-kubeconfig --name hilarious-painting-1661434301'
+                    sh 'aws sts get-caller-identity'
                     sh 'ls'
-                    sh 'chmod +x deployment-status.sh && ./deployment-status.sh'
-                    sh "kubectl set image deployment sample-spring-boot -n devopslab springboot-sample=$dogistan/devopslab:latest"
+                    sh "kubectl apply -f kubernetes.yml"
+                    sh "kubectl set image deployment sample-spring-boot -n devopslab springboot-sample=dogistan/devopslab:latest"
                 }
             }
         }

@@ -15,7 +15,7 @@ spec:
         app: sample-spring-boot
     spec:
       containers:
-        - name: springboot-sample
+        - name: sample-spring-boot
           image: dogistan/devopslab:latest #edited
           ports:
             - containerPort: 8080

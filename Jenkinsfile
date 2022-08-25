@@ -4,7 +4,7 @@ pipeline {
         ENV_DOCKER = credentials('dockerhub')
         DOCKERIMAGE = "dogistan/devopslab"
         EKS_CLUSTER_NAME = "demo-cluster"
-        SONAR_TOKEN = credentials('sonar_token')
+        SONAR_TOKEN = credentials('sonar-token')
     }
     stages {
         stage('build') {

@@ -45,9 +45,19 @@ pipeline {
             }
         }
         stage('Deploy App') {
+            agent {
+                docker {
+                    image 'jshimko/kube-tools-aws:3.8.1'
+                    args '-u root --privileged'
+                }
+            }
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'hilarious-painting-1661434301', contextName: 'arn:aws:eks:us-east-1:828621778012:cluster/hilarious-painting-1661434301', credentialsId: 'K8S', namespace: '', serverUrl: 'https://B6231C79817C55F8EC58BBB3E1409890.gr7.us-east-1.eks.amazonaws.com') {
-                    sh ('kubectl get all')
+                echo 'Deploying to kubernetes'
+
+                withAWS(credentials:'aws-credentials') {
+                    sh 'aws eks update-kubeconfig --name hilarious-painting-1661434301'
+                    sh 'chmod +x deployment-status.sh && ./deployment-status.sh'
+                    sh "kubectl set image deployment sample-spring-boot -n devopslab springboot-sample=$dogistan/devopslab:latest"
                 }
             }
         }

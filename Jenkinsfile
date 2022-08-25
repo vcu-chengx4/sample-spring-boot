@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 withKubeConfig(caCertificate: '', clusterName: 'hilarious-painting-1661434301', contextName: 'arn:aws:eks:us-east-1:828621778012:cluster/hilarious-painting-1661434301', credentialsId: 'K8S', namespace: '', serverUrl: 'https://B6231C79817C55F8EC58BBB3E1409890.gr7.us-east-1.eks.amazonaws.com') {
-                    sh ('kubectl apply -f /home/ubuntu/kubernetes.yml')
+                    sh ('kubectl get all')
                 }      
             }
         }

@@ -1,8 +1,8 @@
 #!/bin/bash
-if ! kubectl get ns matthew-oberlies; then
-    kubectl create ns matthew-oberlies
+if ! kubectl get ns devopslab; then
+    kubectl create ns devopslab
 fi
 
-if ! kubectl rollout status deployment sample-spring-boot -n matthew-oberlies; then
+if ! kubectl rollout status deployment sample-spring-boot -n devopslab; then
     kubectl apply -f kubernetes.yml
 fi

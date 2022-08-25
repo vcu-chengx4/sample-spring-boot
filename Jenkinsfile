@@ -33,9 +33,9 @@ pipeline {
             steps {
                 script {
                     echo "uploading image"
-                    docker.withRegistry('https://registry.hub.docker.com/','Docker') {
-                        dockerImage.push("${env.BUILD_NUMBER}")
-                        dockerImage.push("latest")
+                    docker.withRegistry('','dockerhub') {
+                        image.push("${env.BUILD_NUMBER}")
+                        image.push("latest")
                     }
                 }
             }
